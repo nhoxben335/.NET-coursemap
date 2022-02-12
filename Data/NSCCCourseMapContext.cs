@@ -11,4 +11,14 @@ public NSCCCourseMapContext (DbContextOptions<NSCCCourseMapContext> options) //c
 : base(options)
 {
 }
+// Tables
+// This will a set a a particular model and giving it a name 
+// public DbSet<AcademicYear> AcademicYears {get; set;}
+// public DbSet<Instructor> Instructors {get; set;}
+// public DbSet<Diploma> Diplomas {get; set;}
+
+// public DbSet<DiplomaYear> DiplomaYears{get; set;}
+// public DbSet<Semester> Semesters {get; set;}
+// public DbSet<Course> Courses {get; set;}
+
 }
