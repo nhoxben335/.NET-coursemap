@@ -1,10 +1,11 @@
 namespace NSCCCourseMap.Models{
-public class Diploma {
+public class AcademicYear{
 // SCALAR PROPERTIES
 public int Id { get; set; }
 public string Title{ get; set; } = string.Empty;
 
 // NAVIGATION PROPERTY 
-public ICollection<DiplomaYear>? DiplomaYears { get; set; }
+public ICollection<Semester>? Semesters { get; set; }
+public ICollection<DiplomaYearSection>? DiplomaYearSections { get; set; }
 }
 }

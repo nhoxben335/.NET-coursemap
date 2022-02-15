@@ -7,6 +7,11 @@ builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope()){
+    var services = scope.ServiceProvider;
+    // SeedData.Initialize(services);
+}
+
 // add the code from https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-model?view=aspnetcore-6.0&tabs=visual-studio-code
 
 // introduced a db context (database)
