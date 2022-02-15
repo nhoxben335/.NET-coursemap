@@ -17,7 +17,7 @@ public NSCCCourseMapContext (DbContextOptions<NSCCCourseMapContext> options) //c
 // This will a set a a particular model and giving it a name 
 
 public DbSet<AcademicYear> AcademicYears {get; set;}
-public DbSet<AdvisingAssignment> AdvisingAssginemnts {get; set;}
+public DbSet<AdvisingAssignment> AdvisingAssignments {get; set;}
 public DbSet<Course> Courses {get; set;}
 public DbSet<CourseOffering> CourseOfferings{get; set;}
 public DbSet<CoursePrerequisite> CoursePrerequisites {get; set;}
@@ -25,6 +25,8 @@ public DbSet<DiplomaYear> DiplomaYears {get; set;}
 public DbSet<DiplomaYearSection> DiplomaYearSections {get; set;}
 public DbSet<Instructor> Instructors {get; set;}
 public DbSet<Semester> Semesters {get; set;}
+
+public DbSet<Diploma> Diplomas {get; set;}
 
 
  // CUSTOM CONFIGURATION WITH FLUENT API

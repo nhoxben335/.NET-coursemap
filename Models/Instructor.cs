@@ -1,6 +1,8 @@
 namespace NSCCCourseMap.Models{
 public class Instructor{
 // SCALAR PROPERTIES
+public int Id { get; set; }
+
 public string FirstName{ get; set; } = string.Empty;
 public string LastName{ get; set; } = string.Empty;
 // NAVIGATION PROPERTY 

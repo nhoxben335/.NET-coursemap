@@ -5,7 +5,7 @@ public int Id { get; set; } //PK
 
 public int CourseId { get; set; } //FK
 
-public int InstructorId { get; set; } //FK 
+public int? InstructorId { get; set; } //FK 
 
 public int DiplomaYearSectionId { get; set; } //FK 
 

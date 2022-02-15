@@ -1,22 +1,24 @@
 using Microsoft.EntityFrameworkCore;
+using nscccoursemap_nhoxben335.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-var app = builder.Build();
-
-using (var scope = app.Services.CreateScope()){
-    var services = scope.ServiceProvider;
-    // SeedData.Initialize(services);
-}
-
 // add the code from https://docs.microsoft.com/en-us/aspnet/core/tutorials/first-mvc-app/adding-model?view=aspnetcore-6.0&tabs=visual-studio-code
 
 // introduced a db context (database)
 builder.Services.AddDbContext<NSCCCourseMapContext>(options => 
     options.UseSqlServer(builder.Configuration.GetConnectionString("NSCCCourseMapContext"))); 
+
+    var app = builder.Build();
+    using (var scope = app.Services.CreateScope()){
+    
+    var services = scope.ServiceProvider;
+     SeedData.Initialize(services);
+}
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

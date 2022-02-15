@@ -11,6 +11,6 @@ public int PrerequisiteId { get; set; } //FK
 // NAVIGATION PROPERTY 
 public Course? Course {get; set;}
 public Course? Prerequisite {get; set;}
-// not sure if this right or not 
+
 }
 }

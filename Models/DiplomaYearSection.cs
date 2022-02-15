@@ -4,7 +4,7 @@ public class DiplomaYearSection{
 public int Id { get; set; }
 public string Title{ get; set; } = string.Empty;
 public int DiplomaYearId{ get; set; }
-public string AcademicYearId{ get; set; } = string.Empty;
+public int AcademicYearId{ get; set; }
 
 // NAVIGATION PROPERTY 
 public AcademicYear? AcademicYear { get; set; }
