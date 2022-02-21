@@ -9,5 +9,6 @@ public int DiplomaYearSectionId { get; set; }
 // NAVIGATION PROPERTIES
 public Instructor? Instructor { get; set; }
 public DiplomaYearSection? DiplomaYearSection { get; set; }
+
 }
 }
