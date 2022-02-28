@@ -1,10 +1,20 @@
+using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+
 namespace NSCCCourseMap.Models{
+
+[Index("InstructorId", IsUnique = true)]
+[Index("DiplomaYearSectionId", IsUnique = true)]
 public class AdvisingAssignment {
 // SCALAR PROPERTIES
-public int Id { get; set; } //PK
 
-public int InstructorId { get; set; } //FK
+[Required]
+public int Id { get; set; } 
 
+[Required]
+public int InstructorId { get; set; } 
+
+[Required]
 public int DiplomaYearSectionId { get; set; } 
 // NAVIGATION PROPERTIES
 public Instructor? Instructor { get; set; }
