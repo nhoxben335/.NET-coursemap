@@ -3,8 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace NSCCCourseMap.Models{
 
-[Index("InstructorId", IsUnique = true)]
-[Index("DiplomaYearSectionId", IsUnique = true)]
+[Index(nameof(InstructorId), nameof(DiplomaYearSectionId), IsUnique = true)]
+
+
+
 public class AdvisingAssignment {
 // SCALAR PROPERTIES
 
