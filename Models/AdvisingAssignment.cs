@@ -4,15 +4,10 @@ using Microsoft.EntityFrameworkCore;
 namespace NSCCCourseMap.Models{
 
 [Index(nameof(InstructorId), nameof(DiplomaYearSectionId), IsUnique = true)]
-
-
-
 public class AdvisingAssignment {
 // SCALAR PROPERTIES
 
-[Required]
 public int Id { get; set; } 
-
 [Required]
 public int InstructorId { get; set; } 
 

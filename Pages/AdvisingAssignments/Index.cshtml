@@ -1,0 +1,48 @@
+@page
+@model nscccoursemap_nhoxben335.Pages.AdvisingAssignments.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Advising Assignments</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AdvisingAssignment[0].Instructor)
+            </th>
+            <th>Section</th>
+            <th>Diploma</th>
+            <th>Diploma Year</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.AdvisingAssignment) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Instructor.FirstName)
+                
+                @Html.DisplayFor(modelItem => item.Instructor.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiplomaYearSection.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DiplomaYearSection.DiplomaYear.Diploma.Title)
+            </td>
+            <td>@Html.DisplayFor(modelItem => item.DiplomaYearSection.DiplomaYear.Title)</td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

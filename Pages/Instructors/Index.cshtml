@@ -2,10 +2,10 @@
 @model nscccoursemap_nhoxben335.Pages.Instructors.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Instructors";
 }
 
-<h1>Index</h1>
+<h1>Instructors</h1>
 
 <p>
     <a asp-page="Create">Create New</a>
@@ -14,16 +14,18 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Instructor[0].FirstName)
+                @* @Html.DisplayNameFor(model => model.Instructor[0].LastName) *@
+                Last Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Instructor[0].LastName)
+                @* @Html.DisplayNameFor(model => model.Instructor[0].FirstName) *@
+                First Name
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Instructor) {
+@foreach (var item in Model.Instructors) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)

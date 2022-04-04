@@ -19,11 +19,14 @@ namespace nscccoursemap_nhoxben335.Pages.Instructors
             _context = context;
         }
 
-        public IList<Instructor> Instructor { get;set; }
+        public IList<Instructor> Instructors { get;set; }
 
         public async Task OnGetAsync()
         {
-            Instructor = await _context.Instructors.ToListAsync();
+            Instructors = await _context.Instructors
+            .OrderBy(i => i.FirstName)
+            .OrderByDescending(i => i.LastName)
+            .ToListAsync();
         }
     }
 }

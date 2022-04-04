@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace NSCCCourseMap.Models{
 
-[Index("Name", IsUnique = true)]
+   [Index(nameof(Name), IsUnique = true)]
 public class Semester{
 // SCALAR PROPERTIES
 public int Id { get; set; }

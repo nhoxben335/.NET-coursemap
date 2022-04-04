@@ -9,10 +9,13 @@ public class DiplomaYearSection{
 // SCALAR PROPERTIES
 public int Id { get; set; }
 [Required]
+
+[RegularExpression(@"^Section\s[1-9]{1}$", ErrorMessage = "Incorrect Formatting")]
 public string Title{ get; set; } = string.Empty;
 
 [Required]
 public int DiplomaYearId{ get; set; }
+
 [Required]
 public int AcademicYearId{ get; set; }
 

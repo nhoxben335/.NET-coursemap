@@ -2,19 +2,18 @@ using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
 
 namespace NSCCCourseMap.Models{
-    
-[Index("CourseCode", IsUnique = true)]
+   [Index(nameof(CourseCode), IsUnique = true)]
 public class Course {
 
 // SCALAR PROPERTIES
     public int Id { get; set; }
-
     
     [Required]
-    [RegularExpression(@"/^[A-Za-z]{4}\d{4}$/")]
+    [RegularExpression(@"^[A-Z]{4}\s[0-9]{4}$", ErrorMessage = "Incorrect Formatting")]   
     public string CourseCode{ get; set; } = string.Empty;
     
     [Required]
+    [MinLength(5), MaxLength(100)]
     [StringLength(100, MinimumLength = 5)]
     public string Title {get; set;} = string.Empty;
     
