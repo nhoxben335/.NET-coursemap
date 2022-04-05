@@ -8,7 +8,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>AdvisingAssignment</h4>
+    <h4>Advising Assignment</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -22,6 +22,12 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AdvisingAssignment.DiplomaYearSection.Title)
+        </dd>
+        <dt class="col-sm-2">
+            Diploma
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AdvisingAssignment.DiplomaYearSection.DiplomaYear.Diploma.Title)
         </dd>
     </dl>
 </div>

@@ -23,6 +23,21 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Instructor.LastName)
         </dd>
+        <dt class="col-sm-2">
+           Advising Assignments
+        </dt>
+        <dd class="col-sm-10">
+            @foreach(var item in Model.AdvisingAssignments){
+                @Html.Raw(
+                    item.DiplomaYearSection.DiplomaYear.Diploma.Title + " - " +
+                    item.DiplomaYearSection.DiplomaYear.Title + " - " +
+                    item.DiplomaYearSection.Title + " - " +
+                    item.Instructor.FirstName + " " +
+                    item.Instructor.LastName + " - " +
+                    item.DiplomaYearSection.AcademicYear.Title
+                )<br/>
+            }
+        </dd>
     </dl>
 </div>
 <div>

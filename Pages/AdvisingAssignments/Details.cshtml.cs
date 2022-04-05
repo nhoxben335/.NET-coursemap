@@ -30,6 +30,8 @@ namespace nscccoursemap_nhoxben335.Pages.AdvisingAssignments
 
             AdvisingAssignment = await _context.AdvisingAssignments
                 .Include(a => a.DiplomaYearSection)
+                    .ThenInclude(dys => dys.DiplomaYear)
+                        .ThenInclude(dy => dy.Diploma)
                 .Include(a => a.Instructor).FirstOrDefaultAsync(m => m.Id == id);
 
             if (AdvisingAssignment == null)

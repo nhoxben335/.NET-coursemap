@@ -20,6 +20,8 @@ namespace nscccoursemap_nhoxben335.Pages.Semesters
         }
 
         public Semester Semester { get; set; }
+        public IEnumerable<CourseOffering> CourseOfferings {get;set;}
+
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -29,7 +31,22 @@ namespace nscccoursemap_nhoxben335.Pages.Semesters
             }
 
             Semester = await _context.Semesters
-                .Include(s => s.AcademicYear).FirstOrDefaultAsync(m => m.Id == id);
+                                    .FirstOrDefaultAsync(m => m.Id == id);
+
+
+            CourseOfferings = await _context.CourseOfferings
+                                        .Include(co => co.Semester)
+                                            .ThenInclude(s=>s.AcademicYear)
+                                        .Include(co=>co.Instructor)
+                                        .Include(co=>co.Course)
+                                        .Include(co=>co.DiplomaYearSection)
+                                                .ThenInclude(dys=>dys.DiplomaYear)
+                                                    .ThenInclude(dy=>dy.Diploma)
+                                        .OrderBy(co=>co.DiplomaYearSection.DiplomaYear.Diploma.Title)
+                                            .ThenBy(co=>co.DiplomaYearSection.DiplomaYear.Title)
+                                                .ThenBy(co=>co.Course.CourseCode)
+                                        .Where(co=>co.Semester.Id == id)
+                                        .ToListAsync();
 
             if (Semester == null)
             {

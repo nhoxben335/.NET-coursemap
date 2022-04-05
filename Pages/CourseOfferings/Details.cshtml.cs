@@ -31,6 +31,8 @@ namespace nscccoursemap_nhoxben335.Pages.CourseOfferings
             CourseOffering = await _context.CourseOfferings
                 .Include(c => c.Course)
                 .Include(c => c.DiplomaYearSection)
+                    .ThenInclude(dys=>dys.DiplomaYear)
+                        .ThenInclude(dy=>dy.Diploma)
                 .Include(c => c.Instructor)
                 .Include(c => c.Semester).FirstOrDefaultAsync(m => m.Id == id);
 

@@ -20,6 +20,7 @@ namespace nscccoursemap_nhoxben335.Pages.Diplomas
         }
 
         public Diploma Diploma { get; set; }
+        public IEnumerable<DiplomaYear> Years {get; set;}
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,7 +29,13 @@ namespace nscccoursemap_nhoxben335.Pages.Diplomas
                 return NotFound();
             }
 
-            Diploma = await _context.Diplomas.FirstOrDefaultAsync(m => m.Id == id);
+            Diploma = await _context.Diplomas
+                                    .FirstOrDefaultAsync(m => m.Id == id);
+
+            Years = await _context.DiplomaYears
+                                .Include(dy=>dy.Diploma)
+                                .Where(dy=>dy.Diploma.Id == id)
+                                .ToListAsync();
 
             if (Diploma == null)
             {

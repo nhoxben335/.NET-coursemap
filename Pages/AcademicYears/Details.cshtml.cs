@@ -20,6 +20,8 @@ namespace nscccoursemap_nhoxben335.Pages.AcademicYears
         }
 
         public AcademicYear AcademicYear { get; set; }
+        public IEnumerable<string> Semesters {get; set;}
+        public IEnumerable<DiplomaYearSection> AdvisingAssignment {get; set;}
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,7 +30,29 @@ namespace nscccoursemap_nhoxben335.Pages.AcademicYears
                 return NotFound();
             }
 
-            AcademicYear = await _context.AcademicYears.FirstOrDefaultAsync(m => m.Id == id);
+             AcademicYear = await _context.AcademicYears
+                                        .Include(ay => ay.Semesters)
+                                        .Include(ay => ay.DiplomaYearSections)
+                                            .ThenInclude(dys=>dys.AdvisingAssignment)
+                                                .ThenInclude(co=>co.Instructor)
+                                        .Include(ay => ay.DiplomaYearSections)
+                                            .ThenInclude(dys => dys.AdvisingAssignment)
+                                         .Include(ay => ay.DiplomaYearSections)
+                                            .ThenInclude(dys => dys.DiplomaYear)
+                                                .ThenInclude(dys => dys.Diploma)
+                                        .FirstOrDefaultAsync(m => m.Id == id);
+
+            Semesters = AcademicYear.Semesters
+                                    .OrderBy(s=> s.Name)
+                                    .Select(s => s.Name);
+                                    
+            AdvisingAssignment = await _context.DiplomaYearSections
+                                            .Include(dys=> dys.AdvisingAssignment)
+                                                .ThenInclude(aa=>aa.Instructor)
+                                            .Include(dys => dys.DiplomaYear)
+                                                .ThenInclude(dy => dy.Diploma)
+                                            .Where(dys=>dys.AcademicYear.Id == id)
+                                            .ToListAsync();
 
             if (AcademicYear == null)
             {

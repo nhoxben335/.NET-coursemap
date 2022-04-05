@@ -20,6 +20,7 @@ namespace nscccoursemap_nhoxben335.Pages.Instructors
         }
 
         public Instructor Instructor { get; set; }
+        public IEnumerable<AdvisingAssignment> AdvisingAssignments {get;set;}
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,7 +29,21 @@ namespace nscccoursemap_nhoxben335.Pages.Instructors
                 return NotFound();
             }
 
-            Instructor = await _context.Instructors.FirstOrDefaultAsync(m => m.Id == id);
+            Instructor = await _context.Instructors
+                                        
+                                        .FirstOrDefaultAsync(m => m.Id == id);
+
+
+
+            AdvisingAssignments = await _context.AdvisingAssignments
+                                             .Include(aa=>aa.DiplomaYearSection)
+                                                .ThenInclude(dys=>dys.DiplomaYear)
+                                                    .ThenInclude(dy=>dy.Diploma)
+                                            .Include(aa=>aa.DiplomaYearSection)
+                                                .ThenInclude(dys=>dys.AcademicYear)
+                                            .OrderByDescending(aa => aa.DiplomaYearSection.AcademicYear.Title)
+                                            .Where(aa => aa.Instructor.Id == id)
+                                            .ToListAsync();
 
             if (Instructor == null)
             {

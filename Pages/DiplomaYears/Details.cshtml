@@ -8,7 +8,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>DiplomaYear</h4>
+    <h4>Diploma Year</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -22,6 +22,25 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.DiplomaYear.Diploma.Title)
+        </dd>
+        <dt class="col-sm-2">
+           Course Offerings
+        </dt>
+        <dd class="col-sm-10">
+            @{ var semesterName = ""; }
+            @foreach(var courseOffering in Model.CourseOfferings){
+                @if(courseOffering.Semester.Name != semesterName){
+                    @Html.Raw("<h4>"+courseOffering.Semester.Name+"</h4>")
+                    semesterName = courseOffering.Semester.Name;
+                }
+                
+                @Html.Raw(
+                    courseOffering.Course.CourseCode+" - "+ 
+                    courseOffering.Course.Title + " - "+ 
+                    courseOffering.Instructor.FirstName + " "+
+                    courseOffering.Instructor.LastName+ " - "+
+                    "Directed Elective: " + courseOffering.IsDirectedElective)<br/>
+            }
         </dd>
     </dl>
 </div>

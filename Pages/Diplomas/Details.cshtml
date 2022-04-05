@@ -17,6 +17,12 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Diploma.Title)
         </dd>
+        <dt class="col-sm-2">
+            Duration
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.Years.Count() + " years")
+        </dd>
     </dl>
 </div>
 <div>

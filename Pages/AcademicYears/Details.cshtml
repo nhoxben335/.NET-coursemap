@@ -17,6 +17,27 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.AcademicYear.Title)
         </dd>
+        <dt class="col-sm-2">
+            Semesters
+        </dt>
+        <dd class="col-sm-10">
+            @foreach(var item in Model.Semesters){
+                @Html.Raw(item)<br/>
+            }
+        </dd>
+        <dt class="col-sm-2">
+            Advising Assignments
+        </dt>
+        <dd class="col-sm-10">
+            @foreach(var item in Model.AdvisingAssignment){
+                @Html.Raw(
+                item.DiplomaYear.Diploma.Title + " - " + 
+                item.DiplomaYear.Title + " - " + 
+                item.AdvisingAssignment.Instructor.FirstName + " " + 
+                item.AdvisingAssignment.Instructor.LastName 
+                )<br/>
+            }
+        </dd>
     </dl>
 </div>
 <div>
