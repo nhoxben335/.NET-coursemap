@@ -25,8 +25,8 @@ public int SemesterId { get; set; } //FK
 public bool IsDirectedElective { get; set; } // not sure this part 
 
 // NAVIGATION PROPERTY 
-public DiplomaYearSection? DiplomaYearSections { get; set; } // not sure if named this right
-public Semester? Semesters { get; set; }
+public DiplomaYearSection? DiplomaYearSection { get; set; } // not sure if named this right
+public Semester? Semester { get; set; }
 public Course? Course { get; set; }
 public Instructor? Instructor { get; set; }
 }

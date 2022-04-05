@@ -23,16 +23,23 @@ namespace nscccoursemap_nhoxben335.Pages.CourseOfferings
 
         public async Task OnGetAsync()
         {
+            // CourseOffering = await _context.CourseOfferings
+            //     .Include(c => c.Course)
+            //     .Include(c => c.DiplomaYearSection)
+            //     .Include(c => c.Instructor)
+            //     .Include(c => c.Semester).ToListAsync();
             CourseOffering = await _context.CourseOfferings
                 .Include(c => c.Course)
                 .Include(c => c.DiplomaYearSection)
                 .Include(c => c.Instructor)
                 .Include(c => c.Semester)
-                .OrderByDescending(c => c.Semester)
-                .ThenBy(c => c.DiplomaYearSection.DiplomaYear.Diploma)
-                .ThenBy(c => c.DiplomaYearSection.DiplomaYear)
-                .ThenBy(c => c.Course.CourseCode)
+                .OrderByDescending(c => c.Semester.Name)
+                    .ThenBy(c => c.DiplomaYearSection.DiplomaYear.Diploma.Title)
+                    .ThenBy(c => c.DiplomaYearSection.DiplomaYear.Title)
+                    .ThenBy(c => c.Course.CourseCode)
                 .ToListAsync();
         }
     }
 }
+
+

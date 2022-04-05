@@ -17,10 +17,10 @@
                 @Html.DisplayNameFor(model => model.CourseOffering[0].IsDirectedElective)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CourseOffering[0].DiplomaYearSections)
+                @Html.DisplayNameFor(model => model.CourseOffering[0].DiplomaYearSection)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CourseOffering[0].Semesters)
+                @Html.DisplayNameFor(model => model.CourseOffering[0].Semester)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CourseOffering[0].Course)
@@ -38,10 +38,10 @@
                 @Html.DisplayFor(modelItem => item.IsDirectedElective)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.DiplomaYearSections.Title)
+                @Html.DisplayFor(modelItem => item.DiplomaYearSection.Title)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Semesters.Name)
+                @Html.DisplayFor(modelItem => item.Semester.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Course.CourseCode)

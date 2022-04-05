@@ -21,6 +21,8 @@ namespace nscccoursemap_nhoxben335.Pages.Courses
 
         public Course Course { get; set; }
 
+        public IEnumerable<CoursePrerequisite> Prerequisites {get; set;}
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -28,8 +30,14 @@ namespace nscccoursemap_nhoxben335.Pages.Courses
                 return NotFound();
             }
 
-            Course = await _context.Courses.FirstOrDefaultAsync(m => m.Id == id);
+            Course = await _context.Courses
+                                    .FirstOrDefaultAsync(m => m.Id == id);
 
+          Prerequisites = await _context.CoursePrerequisites
+                .Include(c => c.Course)
+                .Include(c => c.Prerequisite)
+                .Where(c=>c.Course.Id == id)             
+                .ToListAsync();
             if (Course == null)
             {
                 return NotFound();
