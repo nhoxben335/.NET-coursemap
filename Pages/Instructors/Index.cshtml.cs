@@ -24,8 +24,7 @@ namespace nscccoursemap_nhoxben335.Pages.Instructors
         public async Task OnGetAsync()
         {
             Instructors = await _context.Instructors
-            .OrderBy(i => i.FirstName)
-            .OrderByDescending(i => i.LastName)
+            .OrderBy(i => i.LastName)
             .ToListAsync();
         }
     }
