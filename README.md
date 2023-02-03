@@ -2,4 +2,4 @@
 
 # WEBD3000 - NSCC CourseMap Application
 
-This repository will hold all of the code to build out your ASP.net application.
+This repository will hold all of the code to build ASP.net application.
